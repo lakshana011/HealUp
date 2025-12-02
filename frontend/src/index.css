@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 180 30% 98%;
+    --foreground: 200 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 200 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 25% 15%;
+
+    --primary: 168 80% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 40% 96%;
+    --secondary-foreground: 200 25% 15%;
+
+    --muted: 180 20% 94%;
+    --muted-foreground: 200 15% 45%;
+
+    --accent: 168 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 180 20% 90%;
+    --input: 180 20% 90%;
+    --ring: 168 80% 32%;
+
+    --radius: 0.75rem;
+
+    --hero-gradient: linear-gradient(135deg, hsl(180 40% 96%) 0%, hsl(175 35% 92%) 100%);
+    --card-shadow: 0 4px 20px -4px hsla(200, 25%, 15%, 0.08);
+    --card-shadow-hover: 0 8px 30px -4px hsla(200, 25%, 15%, 0.12);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 200 25% 15%;
+    --sidebar-primary: 168 80% 32%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 180 40% 96%;
+    --sidebar-accent-foreground: 200 25% 15%;
+    --sidebar-border: 180 20% 90%;
+    --sidebar-ring: 168 80% 32%;
+  }
+
+  .dark {
+    --background: 200 25% 10%;
+    --foreground: 180 20% 98%;
+
+    --card: 200 25% 14%;
+    --card-foreground: 180 20% 98%;
+
+    --popover: 200 25% 14%;
+    --popover-foreground: 180 20% 98%;
+
+    --primary: 168 70% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 20% 20%;
+    --secondary-foreground: 180 20% 98%;
+
+    --muted: 200 20% 20%;
+    --muted-foreground: 180 15% 60%;
+
+    --accent: 168 60% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 200 20% 22%;
+    --input: 200 20% 22%;
+    --ring: 168 70% 45%;
+
+    --sidebar-background: 200 25% 12%;
+    --sidebar-foreground: 180 20% 98%;
+    --sidebar-primary: 168 70% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 200 20% 18%;
+    --sidebar-accent-foreground: 180 20% 98%;
+    --sidebar-border: 200 20% 22%;
+    --sidebar-ring: 168 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer components {
+  .hero-gradient {
+    background: var(--hero-gradient);
+  }
+
+  .card-elevated {
+    @apply bg-card rounded-xl;
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-full font-semibold 
+           hover:opacity-90 transition-all duration-300 inline-flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply bg-card text-foreground px-6 py-3 rounded-full font-semibold border border-border
+           hover:bg-secondary transition-all duration-300 inline-flex items-center gap-2;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-3xl font-bold text-foreground text-center;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground
+           placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 
+           focus:border-primary transition-all duration-200;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
